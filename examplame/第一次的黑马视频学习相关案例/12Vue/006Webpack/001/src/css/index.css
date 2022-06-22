@@ -1,0 +1,21 @@
+li{
+	list-style: none;
+}
+
+
+.box{
+	width: 500px;
+	height:500px;
+	/*//默认情况下，webpack无法处理css中的url地址，不管是图片还是字体库*/
+	background: url('../images/Chrysanthemum.jpg');
+	background-size: cover;
+}
+
+
+.box1{
+	width: 500px;
+	height:500px;
+	/*//默认情况下，webpack无法处理css中的url地址，不管是图片还是字体库*/
+	background: url('../images/01.jpg');
+	background-size: cover;
+}

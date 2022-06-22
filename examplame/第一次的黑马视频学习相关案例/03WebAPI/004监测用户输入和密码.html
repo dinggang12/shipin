@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		.bg{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="txtUserName">
+	<input type="password" id="txtPassWord">
+	<input type="button" name="" id="btn" value="btnLogin">
+	
+
+	<script type="text/javascript">
+		var btnLogin=document.getElementById('btn');
+		btnLogin.onclick=function(){
+			var txtUserName=document.getElementById('txtUserName');
+			var txtPassWord=document.getElementById('txtPassWord');
+
+			if(txtUserName.value.length<3||txtUserName.value.length>6){
+				txtUserName.className='bg';
+				return
+			}else{
+				txtUserName.className='';
+			}
+
+			if(txtPassWord.value.length<6||txtPassWord.value.length>8){
+				txtPassWord.className='bg';
+				return
+			}else{
+				txtPassWord.className='';
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="button" id="btn" value="获取文本框的值">
+
+	<script type="text/javascript">
+		//1.获取所有文本框
+		 var inputs=document.getElementsByTagName('input');
+
+
+		 for(var i=0;i<inputs.length;i++){
+		 	if(inputs[i].type==='text'){
+
+		 		inputs[i].value=i;
+		 	}
+		 }
+
+
+		 var btn=document.getElementById('btn');
+		 btn.onclick=function(){
+		 	var s=[];
+		 	for(var i=0;i<inputs.length;i++){
+		 		var input=inputs[i];
+		 		if(input.type==='text'){
+		 			s.push(input.value);
+		 		}
+		 	}
+		 	var a=s.join('|');
+		 	console.log(a);
+		 }
+	</script>
+</body>
+</html>

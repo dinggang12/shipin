@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>选择水果</title>
+	<style>
+        select {
+            width:200px;
+            height: 200px;
+            background-color: #33cccc;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+	<select id="all" multiple="multiple">
+	    <option>苹果</option>
+	    <option>橘子</option>
+	    <option>梨</option>
+	    <option>西瓜</option>
+	    <option>水蜜桃</option>
+  	</select>
+
+	 <input type="button" value=">>" id="btn1">
+	 <input type="button" value="<<" id="btn2">
+	 <input type="button" value=">" id="btn3">
+	 <input type="button" value="<" id="btn4">
+
+  	<select id="select" multiple="multiple">
+    
+  	</select>
+  
+  	<script src="../commonjs/common.js"></script>
+  	<script type="text/javascript">
+  		var all=my$('all');
+  		var select=my$('select')
+  		//1.全部选择
+  		my$('btn1').onclick=function(){
+
+  			/*for(var i=all.children.length-1;i>=0;i--){
+  				var option=all.children[i];
+  				my$('select').appendChild(option);
+
+  			}*//*顺序会反了*/
+  			var len=all.children.length;
+  			for(var i=0;i<len;i++){
+  				var option=all.children[0];
+  				select.appendChild(option);
+  		    }
+  	    }
+  	    my$('btn2').onclick=function(){
+
+  		
+  			var len=select.children.length;
+  			for(var i=0;i<len;i++){
+  				var option=select.children[0];
+  				all.appendChild(option);
+  		    }
+  	    }
+  	    //移动选中的按钮
+  	    my$('btn3').onclick=function(){
+  	    	//找到所有选中的option
+  	    	var arr=[];/*用来存储选中的option*/
+  	    	for(var i=0;i<all.children.length;i++){
+  	    		var option=all.children[i];
+  	    		if(option.selected){
+  	    			arr.push(option);
+  	    			option.selected=false
+  	    		}
+  	    	}
+
+  	    	for(var i=0;i<arr.length;i++){
+  	    		var option=arr[i];
+  	    		select.appendChild(option);
+  	    	}
+  	    }
+  	    my$('btn4').onclick=function(){
+  	    	//找到所有选中的option
+  	    	var arr=[];/*用来存储选中的option*/
+  	    	for(var i=0;i<select.children.length;i++){
+  	    		var option=select.children[i];
+  	    		if(option.selected){
+  	    			arr.push(option);
+  	    			option.selected=false
+  	    		}
+  	    	}
+
+  	    	for(var i=0;i<arr.length;i++){
+  	    		var option=arr[i];
+  	    		all.appendChild(option);
+  	    	}
+  	    }
+
+  	</script>
+</body>
+</html>

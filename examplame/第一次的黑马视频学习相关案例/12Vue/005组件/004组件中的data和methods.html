@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	
+</head>
+<body>
+	
+	<div id="app">
+		<mycom2></mycom2>
+	</div>
+
+	<template id="tmp">
+		<h3>决胜巅峰</h3>
+	</template>
+
+	<script type="text/javascript">
+		
+		Vue.component('mycom2',{
+			template:'<h3>this.msg</h3>',
+			data:function(){
+				return {
+					msg:'这是组件中的data定义的数据'
+				}
+			}
+		})
+
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</body>
+</html>

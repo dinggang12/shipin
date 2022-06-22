@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		section{
+			width: 80%;
+			height: 200px;
+			border:1px solid pink;
+			margin: 100px auto;
+			display: flex;
+		}
+		section div{
+			width: 33.33%;
+			height: 100%;
+			float: left;
+			margin: 0 5px;
+		}
+		section div:nth-child(1){
+			width: 300px;
+		}
+		section div:nth-child(2){
+			background-color: purple;
+			flex: 1;
+		}
+		section div:nth-child(3){
+			background-color: pink;
+			flex:2;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div></div>
+		<div></div>
+		<div></div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		#box table{
+			border-collapse: collapse;
+
+		}
+	</style>
+
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript" src="../commonjs/common.js"></script>
+	<script type="text/javascript">
+		var s={name:'zs',subject:'语文',score:90};
+		var datas=[
+			{name:'zs',subject:'语文',score:90},
+			{name:'ls',subject:'语文',score:100},
+			{name:'ww',subject:'语文',score:65},
+			{name:'zl',subject:'语文',score:70},
+			{name:'w21w',subject:'语文',score:125},
+			{name:'z21l',subject:'语文',score:710},
+		];
+		//表头数据
+		var header=['姓名','科目','成绩','操作'];
+		//1.创建table元素
+		var table=document.createElement('table');
+		my$('box').appendChild(table);
+		table.border='1px';
+		table.width='400px';
+		table.style.textAlign='center';
+		//2.创建表头
+		var thead=document.createElement('thead');
+		table.appendChild(thead);
+
+		//3.创建表头行
+		var tr=document.createElement('tr');
+		thead.appendChild(tr);
+		tr.style.height='40px';
+		tr.style.backgroundColor='#ccc';
+		//4.创建表头列
+		for(var i=0;i<header.length;i++){
+			var th=document.createElement('th');
+			tr.appendChild(th);
+			setInnerText(th,header[i]);
+		}
+
+
+		var tbody=document.createElement('tbody');
+		table.appendChild(tbody);
+		for(var i=0;i<datas.length;i++){
+			var data=datas[i];
+			tr=document.createElement('tr');
+			tbody.appendChild(tr);
+
+			for(var key in data){
+				var td=document.createElement('td');
+				tr.appendChild(td);
+				setInnerText(td,data[key]);
+			}
+
+			var td=document.createElement('td');
+			tr.appendChild(td);
+			var link=document.createElement('a');
+			td.appendChild(link)
+			
+			link.href='javascript:void(0)';
+			setInnerText(link,'删除');
+
+			link.onclick=linkDelete;
+		}
+
+		function linkDelete(){
+			
+			
+			//获取要删除的行
+			//var parentNode1=this.parentNode.parentNode.parentNode;
+			var tr=this.parentNode.parentNode;
+			tbody.removeChild(tr);
+			return false
+		}
+	</script>
+</body>
+</html>

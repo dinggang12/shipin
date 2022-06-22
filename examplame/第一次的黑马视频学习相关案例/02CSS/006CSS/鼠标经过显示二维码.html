@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: o;
+			margin: 0;
+
+		}
+
+		div{
+			
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+			background-color: pink;
+			margin: 150px auto;
+			position: relative;
+		}
+
+		div img{
+			position: absolute;
+			left: 100px;
+			top:0;
+			display: none;
+		}
+		div:hover img{/*鼠标经过div的时候，div里面的那个img显示出来*/
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		扫二维码
+		<img src="images/erweima.png">
+	</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <div>
+      <div><input type="checkbox" v-model="checkAll" />选择所有</div>
+      <div><input type="checkbox" @change="inverse" />逆</div>
+      <div class="fruit" v-for="(item, index) of fruits" :key="index">
+        <input type="checkbox" :value="item.value" v-model="model" />{{ item.label }}
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    new Vue({
+      el:"#app",
+      data: {
+          fruits: [
+            {
+              label: "Apple",
+              value: "apple",
+            },
+            {
+              label: "Banana",
+              value: "banana",
+            },
+            {
+              label: "Cherry",
+              value: "cherry",
+            },
+            {
+              label: "Orange",
+              value: "orange",
+            },
+          ],
+          model: []
+      },
+      computed: {
+        checkAll: {
+          get() {
+            return this.model.length === this.fruits.length;
+          },
+          set(val) {
+            if (val) {
+              this.model = [];
+              this.fruits.forEach((fruit) => {
+                this.model.push(fruit.value);
+              });
+            } else {
+              this.model = [];
+            }
+          },
+        }       
+      },
+      methods: {
+        inverse() {
+          this.fruits.forEach((fruit) => {
+            let index = this.model.findIndex((item) => item === fruit.value);
+            if (index > -1) {
+              this.model.splice(index, 1);
+            } else {
+              this.model.push(fruit.value);
+            }
+          });
+        },
+      },
+    })
+  </script>
+</body>
+</html>
+
+
+

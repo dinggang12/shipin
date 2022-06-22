@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	
+</head>
+<body>
+	
+	<div id="app">
+		<!-- 如果要使用组件，直接把组件的名称，以HTML标签的形式引入即可 -->
+		<my-com1></my-com1>
+	</div>
+
+
+	<script type="text/javascript">
+		
+		var com1=Vue.extend({
+			template:'<h3>开始的积分</h3>'//通过template属性，指定了组件要展示的HTML结构
+		});
+
+		//使用Vue.component('组件的名称'，创建出来的组件模板对象)
+		//如果使用Vue.component定义全局组件的时候，组件名称使用了驼峰命名，则引用组件的时候，需要把大写的驼峰改为小写字母，两个单词之前使用-连接
+		Vue.component('myCom1',com1);//注册一个有名字的组件
+
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</body>
+</html>

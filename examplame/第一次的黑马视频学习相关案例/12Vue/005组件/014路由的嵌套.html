@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<script type="text/javascript" src="./lib/vue-router-3.0.1.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		
+		<router-link to="/account">Account</router-link>
+		<router-view></router-view>
+	</div>
+	<template id="tmp1">
+		<div>
+			<h1>这是account组件</h1>
+			<router-link to="/account/login">登录</router-link>
+			<router-link to="/account/register">注册</router-link>
+			<router-view></router-view>
+		</div>
+	</template>
+
+	<script type="text/javascript">
+
+
+
+		var account={
+			template:'#tmp1'
+		}
+		
+		var login={
+			template:"<h3>登录</h3>",
+			created(){
+				
+			},
+			data(){
+				return {}
+			}
+		}
+		var register={
+			template:"<h3>注册</h3>"
+		}
+		
+		var router1 =new VueRouter({
+			routes:[
+			{path:'/account',component:account,children:[{
+				path:'login',component:login
+			},
+			{path:'register',component:register}
+			]},
+			/*{path:'/account/login',component:login},
+			{path:'/account/register',component:register}*/
+		
+			]
+		})
+
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				
+			},
+			methods:{
+				
+			},
+			router:router1
+		});
+	</script>
+</body>
+</html>

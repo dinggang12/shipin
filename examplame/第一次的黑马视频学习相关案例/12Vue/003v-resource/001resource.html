@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7.css">
+	<script type="text/javascript" src="./vue.js"></script>
+	<script type="text/javascript" src="./vue-resource-1.3.4.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		
+		<input type="button" value="get请求" @click='getInfo' name="">
+		<input type="button" value="post请求" @click='postInfo' name="">
+	</div>
+
+
+	<script type="text/javascript">
+		
+		
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				
+			},
+			methods:{
+				getInfo(){
+					this.$http.get('http://vue.studyit.io/api/getlinbo').then(function(result){
+						console.log(result.data);
+					})
+				}
+			}
+		});
+	</script>
+</body>
+</html>

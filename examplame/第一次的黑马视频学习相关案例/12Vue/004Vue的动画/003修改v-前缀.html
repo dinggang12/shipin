@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<style type="text/css">
+		/*v-enter，是进入之前，元素的起始状态，此时还没有开始进入
+		v-leave-to，是动画离开之后，离开的终止状态，此时，元素动画已经结束*/
+		.v-enter,.v-leave-to{
+			opacity: 0;
+			transform: translateX(150px);
+		}
+
+
+
+		/*v-enter-active 入场动画的时间段
+		v-leave-actve 离场动画的时间段*/
+		.v-enter-active,
+		.v-leave-active{
+			transition: all 1s ease;
+		}
+
+
+		.my-enter,.my-leave-to{
+			opacity: 0;
+			transform: translateY(150px);
+		}
+
+
+
+		/*v-enter-active 入场动画的时间段
+		v-leave-actve 离场动画的时间段*/
+		.my-enter-active,
+		.my-leave-active{
+			transition: all 1s ease;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		
+		<transition>
+			<h3 v-show='flag'>这是h3</h3>
+		</transition>
+		<input type="button" value="点击" @click="flag=!flag" name="">
+
+		<transition name="my">
+			<h6 v-show='flag2'>这是h3</h6>
+		</transition>
+		<input type="button" value="点击2" @click="flag2=!flag2" name="">
+	</div>
+
+
+	<script type="text/javascript">
+		
+		
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				flag:false,
+				flag2:false
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</body>
+</html>

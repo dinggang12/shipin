@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript" src="../jQuery/jquery-1.12.2.js"></script>
+	<script type="text/javascript" >
+		$(function(){
+			$("ul>li").mouseover(function(){
+				$(this).css("backgroundColor","");
+				$(this).css("backgroundColor","red");
+			});
+			$("ul>li").mouseout(function(){
+				$(this).css("backgroundColor","yellow");
+			})
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+</body>
+</html>

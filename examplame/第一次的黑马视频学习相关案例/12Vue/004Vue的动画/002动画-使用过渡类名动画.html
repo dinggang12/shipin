@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue-2.4.0.js"></script>
+	<!-- 自定义两组样式，来控制transition 内部的元素实现动画 -->
+
+	<style type="text/css">
+		/*v-enter，是进入之前，元素的起始状态，此时还没有开始进入
+		v-leave-to，是动画离开之后，离开的终止状态，此时，元素动画已经结束*/
+		.v-enter,.v-leave-to{
+			opacity: 0;
+			transform: translateX(100px);
+		}
+
+
+
+		/*v-enter-active 入场动画的时间段
+		v-leave-actve 离场动画的时间段*/
+		.v-enter-active,
+		.v-leave-active{
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		
+		<input type="button" value="点击" @click="flag=!flag" name="">
+		<transition>
+			<h3 v-if='flag'>这是h3</h3>
+		</transition>
+		<!-- 使用transition 元素，把 需要被动画控制的元素包裹起来 -->
+		<!-- transition元素，是Vue官方提供的 -->
+	</div>
+
+
+	<script type="text/javascript">
+		
+		
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				flag:false
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</body>
+</html>

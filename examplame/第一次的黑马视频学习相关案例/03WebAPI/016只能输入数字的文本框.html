@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" name="">
+
+	<script type="text/javascript">
+		var txt=document.getElementById('txt');
+		txt.onkeydown=function(e){
+			e=e||window.event;
+			//如果keyCode的值在48-57之间即是数字
+			//按下后退键可以删除字符
+			if((e.keyCode<48||e.keyCode>57) && e.keyCode!==8){
+				//取消默认行为
+				e.preventDefault();
+			}
+			
+		}
+	</script>
+</body>
+</html>

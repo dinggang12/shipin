@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	
+</head>
+<body>
+	
+	<div id="app">
+		<!-- 如果要使用组件，直接把组件的名称，以HTML标签的形式引入即可 -->
+		<mycom2></mycom2>
+	</div>
+
+
+	<script type="text/javascript">
+		
+		Vue.component('mycom2',{
+			template:'<div><h3>这是直接使用component创建出来的组件</h3><span>123</span></div>'
+		})
+
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</body>
+</html>

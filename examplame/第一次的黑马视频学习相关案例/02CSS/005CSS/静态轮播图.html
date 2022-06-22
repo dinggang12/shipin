@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>静态轮播图</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		.slider{
+			margin: 50px auto;
+			width: 520px;
+			height: 280px;
+			background-color: pink;
+			position: relative;
+		}
+		.arrow-left,.arrow-right{
+			position: absolute;
+			width: 24px;
+			height: 36px;
+			display: block;
+		}
+		.arrow-left{
+			left:0;
+			top: 50%;
+			margin-top:-18px;
+		}
+		.arrow-right{
+			right:0;
+			top: 50%;
+			margin-top:-18px;
+		}
+		.circle{
+			width: 65px;
+			height: 13px;
+			background:rgba(255,255,255,0.3);
+			position: absolute;
+			bottom: 15px;
+			left: 50%;
+			margin-left: -32.5px;
+			border-radius: 6px;
+		}
+		.circle li{
+			width: 9px;
+			height: 9px;
+			background-color: #b7b7b7;
+			float: left;
+			margin: 2px;
+			border-radius: 50%;
+		}
+		li.current{
+			background-color: #ff4400;
+		}
+	</style>
+</head>
+<body>
+	<div class="slider">
+		<img src="images/taobao.jpg">
+		<a href="#" class="arrow-left"><img src="images/left.png"></a>
+		<a href="#" class="arrow-right"><img src="images/right.png"></a>
+		<ul class="circle">
+			<li class="current"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

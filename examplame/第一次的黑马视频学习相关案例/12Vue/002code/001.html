@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7.css">
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		<div class="panel panel-primary">
+			<div class="panei-heading">
+				<h3 class="panel-title">添加品牌</h3>
+			</div>
+			<div class="panel-body form-inline">
+				<label>
+					Id:<input type="text" class="form-control" v-model="id">
+				</label>
+				<label>
+					Name:<input type="text" class="form-control" v-model="name">
+				</label>
+				<input type="button" value="添加" class="btn btn-primary" @click="add">
+				<label>
+					搜索关键字：
+					<input type="text" class="form-control" v-model="keywords" >
+				</label>
+			</div>
+		</div>
+		<table class="table table-border table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Ctime</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- //之前v-for的数据，都是从data上的list中直接渲染过来的
+				//现在，我们自定义一个方法，，同时把所有关键字，通过传参的形式，传递给了search方法
+				//在search内部，通过执行 -->
+				<tr v-for="item in search(keywords)" :key="item.id">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.ctime | dateFormat}}</td>
+					<td><a href="" @click.prevent="del(item.id)">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script type="text/javascript">
+		Vue.filter('dateFormat',function(datestr){
+
+
+			var dt=new Date(datestr);
+			var y=dt.getFullYear();
+			var m=dt.getMonth()+1;
+			var d=dt.getDate();
+			return `${y}-${m}-${d}`
+		})
+		
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				id:'',
+				name:'',
+				keywords:'',
+				list:[
+				{
+					id:1,
+					name:'奔驰',
+					ctime:new Date()
+				},
+				{
+					id:2,
+					name:'宝马',
+					ctime:new Date()
+				}
+				]
+			},
+			methods:{
+				add(){
+					var car={ id:this.id, name:this.name, ctime:new Date()};
+					this.list.push(car);
+					this.id='';
+					this.name='';
+				},
+				del(id){
+					//如何根据id找到要删除这一项的索引
+					this.list.some((item,i)=>{
+						if(item.id==id){
+							this.list.splice(i,1);
+							//Z在数组的some中，如果return true，就会立即中值这个数组的后续循环
+							return true
+						}
+					})
+
+					/*var index=this.list.findIndex((item)=>{
+						if(item.id==id){
+							return true
+						}
+					})
+
+					this.list.splice(index,1);*/
+				},
+				search(keywords){//根据关键字进行数据搜索
+					var newList=[];
+					this.list.forEach((item)=>{
+						if(item.name.indexOf(keywords)!=-1){
+							newList.push(item);
+						}
+					})
+					return newList
+
+				}
+			}
+		});
+	</script>
+</body>
+</html>

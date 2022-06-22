@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		nav{
+			width: 882px;
+			height: 86px;
+			border:1px solid pink;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		nav li{
+			float: left;
+		}
+		nav ul{
+			width: 200%;
+			animation: moving 5s linear infinite;
+
+		}
+		@keyframes moving{
+			from{
+				transform: translateX(0);
+			}
+			to{
+				transform: translateX(-882px);
+			}
+		}
+		nav:hover ul{
+			animation-play-state: paused;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><img src="images/nav1.jpg"></li>
+			<li><img src="images/nav2.jpg"></li>
+			<li><img src="images/nav3.jpg"></li>
+			<li><img src="images/nav4.jpg"></li>
+			<li><img src="images/nav5.jpg"></li>
+			<li><img src="images/nav6.jpg"></li>
+			<li><img src="images/nav7.jpg"></li>
+			<li><img src="images/nav1.jpg"></li>
+			<li><img src="images/nav2.jpg"></li>
+			<li><img src="images/nav3.jpg"></li>
+			<li><img src="images/nav4.jpg"></li>
+			<li><img src="images/nav5.jpg"></li>
+			<li><img src="images/nav6.jpg"></li>
+			<li><img src="images/nav7.jpg"></li>
+		</ul>
+	</nav>
+</body>
+</html>

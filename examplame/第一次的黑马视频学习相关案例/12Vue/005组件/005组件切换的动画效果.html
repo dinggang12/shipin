@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<style type="text/css">
+		.v-enter,.v-leave-to{
+			opacity: 0;
+			transform: translateX(150px);
+		}
+
+
+		.v-enter-active,.v-leave-active{
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<input type="button" value="登录" @click="comName='login'" name="">
+		<input type="button" value="注册" @click="comName='register'" name="">
+		<transition mode="out-in">
+			<compontent :is="comName"></compontent>
+		</transition>
+	</div>
+
+
+	<script type="text/javascript">
+		
+		Vue.component('login',{
+			template:'<h3>登录组件</h3>'
+		});
+		Vue.component('register',{
+			template:'<h3>注册组件</h3>'
+		});
+
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				comName:''
+			},
+			methods:{
+				
+			}
+		});
+	</script>
+</body>
+</html>

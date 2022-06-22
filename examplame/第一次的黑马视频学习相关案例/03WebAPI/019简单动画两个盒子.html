@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		#box{
+			position: relative;
+			background-color: red;
+			width: 100px;
+			height: 100px;
+		}
+		#box1 {
+      		margin-top: 10px;
+      		position: relative;
+      		width: 100px;
+      		height: 100px;
+      		background-color: blue;
+    	}
+	</style>
+</head>
+<body>
+	<input type="button" value="开始" id="btn" name="">
+	<div id="box">	
+	</div>
+	<div id="box1">
+  	</div>
+	<input type="button" id="btn1" name="">
+	<script type="text/javascript">
+		//1.点击按钮，让盒子向右移动
+
+		var btn=document.getElementById('btn');
+		var box=document.getElementById('box');
+		var btn1=document.getElementById('btn1');
+		btn.onclick=function(){
+
+			animate(box,400);
+			animate(box1,400);
+		}
+		btn1.onclick=function(){
+			animate(box,800);
+			animate(box1,800);
+		}
+		
+		function animate(element,target){
+
+			if(element.timeid){
+				clearInterval(element.timeid);
+				element.timeid=null;
+			}
+
+			element.timeid=setInterval(function(){
+				var step=10;
+			    //当前盒子的位置
+			    var current=element.offsetLeft;
+			 	//判断盒子当前的位置是否达到500
+			 	if(current>=target){
+			 		clearInterval(element.timeid);
+			 		//设置横坐标的为500
+			 		element.style.left=target+'px';
+			 		return
+			 	}
+			 	//移动盒子
+			 	current+=step;
+		 		element.style.left=current+'px';
+		    },30);
+		}
+
+		
+
+
+	</script>
+</body>
+</html>

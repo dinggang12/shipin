@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!--文档编码-->
+    <meta charset="utf-8">
+    <!--为了让IE以最新的标准和模式进行当前页面的渲染：为了让 IE 浏览器运行最新的渲染模式下-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--移动端的适配-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap  引入当前bootstrap框架核心的样式文件 -->
+    <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries  
+          在IE8及以下不支持响应式，所以引入文件是为了兼容IE8及以下版本的显示-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// Respond.js如果通过file://打开则不会有效果，需要通过http:// |  https:// 协议打开-->
+    <!-- ie9以下引入以下文件 -->
+    <script src="./lib/html5shiv/html5shiv.min.js"></script>
+    <script src="./lib/respond/respond.js"></script>
+   
+</head>
+<body>
+
+  <div>
+
+      <!-- Nav tabs --><!-- 导航面板 -->
+    <ul class="nav nav-tabs" role="tablist">
+      <!-- href="#home"：锚链接，说明当前导航项链接到id号为home的面板 -->
+      <!--   data-toggle="tab"：它会触发一个事件，这个事件就是切换到指定的面板 -->
+      <li role="presentation" class="active"><a href="#p1" aria-controls="p1" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a href="#p2" aria-controls="p2" role="tab" data-toggle="tab">Profile</a></li>
+      <li role="presentation"><a href="#p3" aria-controls="p3" role="tab" data-toggle="tab">Messages</a></li>
+      <li role="presentation"><a href="#p4" aria-controls="p4" role="tab" data-toggle="tab">Settings</a></li>
+    </ul>
+        <!-- Tab panes --><!-- 内容面板 -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="p1">1</div>
+      <div role="tabpanel" class="tab-pane" id="p2">2</div>
+      <div role="tabpanel" class="tab-pane" id="p3">3</div>
+      <div role="tabpanel" class="tab-pane" id="p4">4</div>
+    </div>
+  </div>
+
+<!-- bootstrap是基于iQuery，所以先引入jq-->
+<script src="./lib/jquery/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed 是bootstrap核心的js文件-->
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./lib/bootstrap-3.3.7.css">
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<script type="text/javascript" src="./lib/vue-resource-1.3.4.js"></script>
+
+</head>
+<body>
+	
+	<div id="app">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> 添加品牌</h3>
+			</div>
+			<div class="panel-body form-inline">
+				<label>Name:<input type="text" v-model="name" class="form-control"></label>
+				<input type="button" value="添加" @click="add" class="btn btn-primary">
+			</div>
+		</div>
+		<table class="table table-borded table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th> 
+					<th>Ctime</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in list" :key='item.id'>
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.ctime}}</td>
+					<td><a href="" @click.prevent="del(item.id)">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script type="text/javascript">
+		//如果我们通过全局配置了，请求的数据接口根域名，在每次单独发起的http请求的时候，请求的URL路径应该以相对的路径开头，不能带 /
+		Vue.http.options.root='http://vue.studyit.io';
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				name:'',
+				list:[
+				{id:1,name:'五菱宏光',ctime:new Date()},
+				{id:2,name:'中台',ctime:new Date()}
+
+				]
+			},
+			methods:{
+				add(){
+					//经过查看数据api接口，要发送一个post请求，
+					this.$http.post('api/addproduct',{name:this.name},{emulateJSON:true}).then(result=>{
+						if(result.body.status===0){
+							//添加完成后，只需要手动调用，调用getALlLiist
+							this.getAllList();
+							this.name='';
+						}else{
+							alert('错误')
+						}
+					})
+				},
+				getAllList(){//获取所有车的品牌列表
+					this.$http.get('api/getprodlist').then((result)=>{
+						//通过this.$http返回的数据都在result.body中
+						var result=result.body;
+						if(result.status==0){
+							this.list=result.message;
+						}else{
+							alert('失败')
+						}
+					})
+				},
+				del(id){
+					this.$http.get('api/delproduct/'+id).then(result=>{
+						if(result.body.status==0){
+							this.getAllList();
+						}else{
+							alert('删除失败');
+						}
+					})
+				}
+
+			},
+			created(){//最好提前发请求
+				this.getAllList()
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+1.使用Github Actions 自动创建issues https://www.bilibili.com/video/BV1F34y1U7JT?spm_id_from=333.999.0.0
+2.githua  https://github.com/cuixiaorui/mini-vue

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	QQ号：<input type="text" id="txtQQ"><span></span><br>
+	邮箱：<input type="text" id="txtEmail"><span></span><br>
+	手机：<input type="text" id="txtPhone"><span></span><br>
+	生日：<input type="text" id="txtBirthday"><span></span><br>
+	姓名：<input type="text" id="txtName"><span></span><br>
+	<script type="text/javascript">
+		var txtQQ=document.getElementById('txtQQ');
+		var reg=/^\d{5,12}$/;
+		txtQQ.onblur=function(){
+			
+			//检测用户输入的文本是否匹配指定的模式
+			if(!reg.test(this.value)){
+				var span=this.nextElementSibling;
+				span.innerText ='请输入正确的QQ格式';
+				span.style.color='red';
+			}else{
+				var span=this.nextElementSibling;
+				span.innerText='';
+				span.style.color='';
+			}
+		}
+		var txtEmail=document.getElementById('txtEmail');
+		var reg=/^\w+@\w+(\.\w+)+$/;
+		txtEmail.onblur=function(){
+			var span=this.nextElementSibling;
+			if(!reg.test(this.value)){
+				span.innerText='请输入争取的邮箱格式';
+				span.style.color='red';
+			}else{
+				span.innerText='';
+				span.style.color='';
+			}
+		}
+	</script>
+</body>
+</html>

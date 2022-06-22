@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		 * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+      <table>
+          <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="j_cbAll" />
+                </th>
+                <th>商品</th>
+                <th>价钱</th>
+            </tr>
+          </thead>
+          <tbody id="j_tb">
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>iPad Pro</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>iPad Air</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>Apple Watch</td>
+                <td>2000</td>
+            </tr>
+          </tbody>
+      </table>
+      <input type="button" id="btn" value="反选" name="">
+    </div>
+	
+	<script type="text/javascript">
+	//1.全选
+		//1.1获取父checkbox并且注册事件
+		var j_cbAll=document.getElementById('j_cbAll');
+		var j_tb=document.getElementById('j_tb');
+		var inputs=j_tb.getElementsByTagName('input');
+		j_cbAll.onclick=function(){
+			//1.2找到子checkbox，让这些checkbox的状态跟父checkbox保持一致
+			
+			for(var i=0;i<inputs.length;i++){
+				var input =inputs[i];
+				if(input.type='checkbox'){
+					input.checked=this.checked;
+				}
+			}
+		}
+
+		for(var i=0;i<inputs.length;i++){
+			var input =inputs[i];
+			if(input.type!=='checkbox'){
+				//结束当前循环继续下次循环
+				continue
+			}
+			//给子checkbox注册事件
+			input.onclick=function(){
+				checkboxe();
+			}
+			
+		}
+	function checkboxe(){
+		var isAllCilck=true;
+		//判断 所有的子checkbox是否都被选中
+		for(var i=0;i<inputs.length;i++){
+			var input=inputs[i];
+			if(input.type!=='checkbox'){
+			//结束当前循环继续下次循环
+				continue
+			}
+			//判断 所有的子checkbox是否都被选中
+			//假设所有的子chenckbox被选中
+					
+			if(!input.checked){
+				isAllCilck=false
+			}
+		}
+		//设置父checkbox的
+		j_cbAll.checked=isAllCilck;
+	}	
+		//1.3当点击的子checkbox，如果所有的子checkbox都被选中了，让父的checkbox也选中
+			//如果有一个子的checkbox没有被选中，父的checkbox也不被选中
+	//2.反选
+	//2.1给反选注册事件
+	//2.2找到所有子checkbox反
+
+	var btn=document.getElementById('btn');
+	btn.onclick=function(){
+		for(var i=0;i<inputs.length;i++){
+			var input=inputs[i];
+			if(input.type!=='checkbox'){
+			//结束当前循环继续下次循环
+				continue
+			}
+			//让子checkbox反选
+			input.checked=!input.checked;
+			checkboxe();
+
+		}		
+	}
+	</script>
+</body>
+</html>

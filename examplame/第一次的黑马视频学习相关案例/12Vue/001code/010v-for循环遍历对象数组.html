@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		<p v-for="item in list">{{item.id}}---{{item.name}}</p>
+	</div>
+
+
+	<script type="text/javascript">
+
+		
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				list:[
+					{id:1,name:'zs1'},
+					{id:12,name:'zs2'},
+					{id:13,name:'zs3'},
+					{id:14,name:'zs4'}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

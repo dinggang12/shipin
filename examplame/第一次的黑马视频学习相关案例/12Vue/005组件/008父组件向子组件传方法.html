@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	
+</head>
+<body>
+	
+	<div id="app">
+		<!-- 父组件向子组件传递方法使用的是事件绑定机制；v-on，当我们自定义一个事件属性之后，那么，子组件就能够通过某些方式来调用传递进去的这个方法 -->
+		<com2 v-on:func="show"></com2>
+	</div>
+	<template id="tmp1">
+		<div>
+			<h1>这是子组件</h1>
+			<input type="button" value="这是子组件中的按钮，点击它，触发父组件传递过来的func方法"  @click="myclick" name="">
+		</div>
+	</template>
+	<script type="text/javascript">
+
+		
+		var com2={
+			template:'#tmp1',//通过指定ID，表示说要去加载这个指定ID的template元素中的内容,
+			methods:{
+				myclick(){
+					//当点击子组件的按钮的时候，如何拿到父组件传递过来的func方法
+					//emit代表触发调用的意思
+					this.$emit('func',this.sonmesg);
+				}
+			},
+			data(){
+				return {
+					sonmesg:{name:'小头儿子',age:'erzi'}
+				}
+			}
+		}
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				msg:'123 啊父组件的数据',
+				datamsg1:null
+			},
+			methods:{
+				show(data){
+					console.log(data);
+					this.datamsg1=data;
+				}
+			},
+			components:{
+				
+				com2
+
+			}
+				
+		});
+	</script>
+</body>
+</html>

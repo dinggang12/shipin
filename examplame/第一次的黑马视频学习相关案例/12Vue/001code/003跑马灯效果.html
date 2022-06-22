@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="vue.js"></script>
+	<script> Vue.config.productionTip=false </script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="浪起来" @click="lang">
+		<input type="button" value="低调" @click="stop">
+		<h4>{{msg}}</h4>
+	</div>
+
+	<script type="text/javascript">
+		//在vm实例中，如果想要获取data上的数据，或者想要调用methods中的方法，必须通过this.数据属性名，或this.方法名，来访问，这里的的this,就表示我们new出来的VM实例对象
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				msg:'猥琐发育，别浪~~！',
+				intervalId:null
+			},
+			methods: {
+				lang(){
+					if(this.intervalId!=null){
+						return
+					}
+					this.intervalId=setInterval( () => {
+							//获取头的第一个字符
+							var start=this.msg.substring(0,1);
+							//获取后面的字符
+							var end=this.msg.substring(1);
+							//重新拼接，并赋值给msg
+							this.msg = end + start;
+							//vm实例会监听自己身上data中所有数据的改变，只要数据有一点变化，就会自动把最新的数据，从data上同步到页面中；程序员只需要关心数据，不需要关心如何重新渲染DOM
+						},400);
+					
+				},
+
+				stop(){
+					clearInterval(this.intervalId);
+					this.intervalId=null;//每当清除了定时器之后，重新把intervalId变为null
+				}
+			}
+		})
+
+
+		//给浪点击事件
+		//在按钮的事件处理函数中写相关逻辑代码;拿到字符串，然后截取字符串substring,把第一个字符截取放到最后一个
+		//为了实现点击一下自动截取的功能，需要把2中，放到定时器中
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		.gy{
+			color: gray;
+		}
+		.black{
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="gray" value="请输入关键字" id="txtText">
+	<input type="button" id="btnSearch" name="" value="搜索">
+
+	<script type="text/javascript">
+		/*当文本框获得焦点，如果文本框的额内容是 请输入关键字 清空文本框 并且让字体变为黑色
+		当文本框失去焦点，如果文本框的额内容是空 还原文本框的文字 并且让字体变为灰色*/
+
+		var txtText=document.getElementById('txtText');
+		txtText.onfocus=function(){
+
+			if(this.value==='请输入关键字'){//this指触发事件的对象
+				this.value='';
+				this.className='black';
+			}
+		}
+
+		txtText.onblur=function(){
+			if(this.value.length===0|| this.value==='请输入关键字'){//this指触发事件的对象
+				this.value='请输入关键字';
+				this.className='gy';
+			}
+		}
+	</script>
+
+</body>
+</html>

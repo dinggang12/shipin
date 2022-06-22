@@ -1,0 +1,285 @@
+/*中间分类模块开始*/
+.grid{
+	height: 480px;
+	
+}
+
+.grid-col1{
+	width: 190px;
+	height: 100%;
+	background-color: #6e6568;
+	color: #fff;
+	font-size: 14px;/*不是给字的，给反斜杠*/
+	position: relative;
+}
+.grid-col1 .ad{
+	width: 250px;
+	height: 480px;
+	position: absolute;
+	top: 0;
+	left: -250px;
+}
+.grid-col1 .ad:hover .ad-r{
+	width: 990px;/*鼠标经过ad这个广告大盒子的时候，里面的图片宽度由0变为990*/
+}
+.ad-r{
+	left:250px;
+	position: absolute;
+	z-index: 999;
+	width: 0;
+	height: 480px;
+	/*这个图片作动画，给他加动画*/
+	transition: all 0.8s; 
+}
+.grid-col1 ul{
+	padding: 15px 0;
+}
+.grid-col1 ul li{
+	padding-left: 12px;/*这里为什么不用margin-left，因为有鼠标经过*/
+	height: 29px;
+	line-height: 26px;
+}
+.grid-col1 ul li:hover{
+	background-color: #9c9698;
+}
+.grid-col1 a{
+	color: #fff;
+	font-size: 14px;/*给链接文字*/
+	margin:0 3px;
+}
+.grid-col1 a:hover{
+	color: #f10215;
+}
+
+
+
+.grid-col2{
+	width: 790px;
+	height: 100%;
+
+	margin-left: 10px;
+}
+
+
+/*箭头部分*/
+.grid-col2-t{
+	position: relative;
+}
+.arrow-l,.arrow-r{
+	position: absolute;
+	width: 30px;
+	height: 60px;
+	top: 50%;
+	background:rgba(0,0,0,0.1);
+	transform: translateY(-50%);
+	text-align: center;
+	line-height: 60px;
+	font-size: 24px;
+	color: rgba(255,255,255,0.6);
+	font-family: arial;
+	font-weight: normal;
+}
+.arrow-r{
+	right: 0;
+}
+.arrow-l{
+	left: 0;
+}
+.circle{
+	width: 165px;
+	height: 20px;
+	background: rgba(255,255,255,0.3);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 20px;
+	border-radius: 10px;
+	padding-left: 10px;
+}
+.circle li{
+	width: 12px;
+	height: 12px;
+	background-color: #fff;
+	border-radius: 50%;
+	float: left;
+	margin: 4px;
+	cursor: pointer;
+}
+
+.grid-col2-b div{
+	float: left;
+	margin-top: 10px;
+}
+.grid-col2-b div:last-child{
+	float: right;
+	margin-top: 10px;
+}
+.circle>.current{
+	background-color: orange;
+}
+
+
+
+
+
+.grid-col3{
+	width: 190px;
+	height: 100%;
+	background-color: #fff;
+}
+
+
+.login{
+	height: 85px;
+	border-bottom: 1px solid #ccc;
+	background-color: #fff;
+	padding: 15px;
+}
+.login-t{
+	width: 95px;
+	font-size: 12px;
+	white-space: nowrap;/*强制一行显示*/
+	overflow: hidden;/*溢出隐藏*/
+	text-overflow: ellipsis;/*超出的部分省略号*/
+	color: #666;
+	height: 60px;
+	padding-left: 60px;
+	line-height: 20px;
+	position: relative;
+}
+.login-t a{
+	color: #666;
+}
+.login-t a:hover{
+	color: #f10512;
+}
+.user-info{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 0;
+	top: 0;
+	
+
+	background: -70px 0 url(../images/sprite_userinfo@1x.png) no-repeat;
+}
+.user-info img{
+	width: 40px;
+	margin: 5px;
+	border-radius: 50%;
+}
+.login-b a{
+	display: inline-block;
+	width: 70px;
+	height: 20px;
+	border: 2px solid  #f10215;
+	margin-right: 3px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 14px;
+	color: #f10215;
+}
+
+.login-b a:hover{
+	background-color: #f10512;
+	color: #fff;
+}
+
+
+/*公告部分*/
+.news{
+	height: 154px;
+	border-bottom: 1px solid #ccc;
+	background-color: #fff;
+	padding: 7px 13px 0;
+	box-sizing: border-box;
+}
+.news-t{
+	height: 19px;
+	position: relative;
+	border-bottom: 1px solid #ccc;
+}
+.news-t a{
+	float: left;
+	height: 17px;
+	line-height: 17px;
+}
+.cuxiao{
+	width: 38px;
+	
+	border-right: 1px solid #ccc;
+	
+}
+.gonggao{
+	margin-left: 15px;
+}
+.news-t .more{
+	float: right;
+}
+.news-t>div{
+	width: 32px;
+	height: 2px;
+	background-color: #f10512;
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+}
+.news-b{
+	
+	padding-top: 15px;
+	
+}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+
+
+.news-b li{
+	height: 23px;
+	line-height: 23px;
+}
+.news-b li a{
+	color: #ccc;
+	font-size: 14px;
+}
+.news-b li a:hover{
+	color: #f10512;
+}
+.expand{
+	height: 209px;
+	overflow: hidden;
+}
+.expand ul{
+	width: 195px;
+
+}
+.expand li{
+	width: 47px;
+	height: 69px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	float: left;
+}
+.expand  li a {
+	display: block;
+	padding-top: 15px;
+	text-align: center;
+}
+.expand  li i {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	background: url(../images/sprite_fs@1x.png) no-repeat;
+	width: 18px;
+	height: 23px;
+	background-position: -5px -88px;
+}
+.expand  li:first-child i {
+	width: 18px;
+	height: 23px;
+	background-position: -5px -88px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		img{
+			animation: car 5s ease infinite ;
+		}
+		@keyframes car{
+			0%{
+				transform: translate3d(0,0,0);
+			}
+			50%{
+				transform: translate3d(1000px,0,0);
+			}
+			51%{
+				transform: translate3d(1000px,0,0) rotateY(180deg);
+				
+			}
+			99%{
+				transform: translate3d(0,0,0) rotateY(180deg);
+			}
+			100%{
+				transform: translate3d(0,0,0) rotateY(180deg);
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<img src="images/car.jpg" width="100px">
+</body>
+</html>

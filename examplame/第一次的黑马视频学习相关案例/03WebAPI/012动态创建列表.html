@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="按钮" name="" id="btn">
+	<div id="box"></div>
+	<script type="text/javascript" src="../commonjs/common.js"></script>
+	<script type="text/javascript">
+		var datas=['西施','貂蝉','凤姐','富饶'];
+		my$('btn').onclick=function(){
+			var ul=document.createElement('ul');
+			my$('box').appendChild(ul);
+			/*把ul放到DOM树上，并且会重新绘制*/
+			for(var i=0;i<datas.length;i++){
+				var data=datas[i];
+				var li=document.createElement('li');
+				ul.appendChild(li);
+				/*把li添加到DOM树，并且重新绘制*/
+				setInnerText(li, data);
+				li.onmouseover=mousemove;
+				li.onmouseout=mousemoveout;
+			}
+		}
+
+		function mousemove(){
+			this.style.backgroundColor='red';
+
+		}
+		function mousemoveout(){
+			this.style.backgroundColor='';
+		}
+	</script>
+</body>
+</html>

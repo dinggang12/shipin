@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript" src="../commonjs/common.js"></script>
+	<script type="text/javascript">
+		var s={name:'zs',subject:'语文',score:90};
+		var datas=[
+			{name:'zs',subject:'语文',score:90},
+			{name:'ls',subject:'语文',score:100},
+			{name:'ww',subject:'语文',score:65},
+			{name:'zl',subject:'语文',score:70},
+			{name:'w21w',subject:'语文',score:125},
+			{name:'z21l',subject:'语文',score:710},
+		];
+		//1.创建table元素
+		var table=document.createElement('table');
+		my$('box').appendChild(table);
+		//2.创建表头
+		var thead=document.createElement('thead');
+		table.appendChild(thead);
+		//3.创建表头
+		var tr=document.createElement('tr');
+		thead.appendChild(tr);
+		var th=document.createElement('th');
+		tr.appendChild(th);
+		setInnerText(th,'姓名');
+
+		th=document.createElement('th');
+		tr.appendChild(th);
+		setInnerText(th,'科目');
+		
+		th=document.createElement('th');
+		tr.appendChild(th);
+		setInnerText(th,'成绩');
+	</script>
+</body>
+</html>

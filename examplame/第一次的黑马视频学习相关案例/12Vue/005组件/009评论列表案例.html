@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="./lib/vue-2.4.0.js"></script>
+  <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css">
+	
+</head>
+<body>
+	
+	<div id="app">
+		<cmt-box></cmt-box>
+
+		<ul class="list-group">
+		    <li class="list-group-item" v-for="item in list" :key="item.id"><br>
+		    <span class="badge">评论人：{{item.user}}</span><br>
+
+
+		    </li>
+    	</ul>
+	</div>
+
+	<template id="temp1">
+		<div>
+			<div class="form-group">
+				<label>评论员：</label>
+				<input type="text" class="form-control" v-model="user" name="">
+			</div>
+			<div class="form-group">
+				<label>评论内容：</label>
+				<textarea class="form-control" v-model="content"></textarea>
+			</div>
+			<div class="form-group">
+				<input type="button" value="发表评论" class="btn btn-primary" @click="contentclick">
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript">
+		
+		var commentBox={
+			template:'#temp1',
+			data(){
+				return {
+					user:'',
+					content:''
+				}
+			},
+			methods:{
+				contentclick(){//发表评论
+					//数据存到哪里，存放到了localstorage中localstorage.setItem('','')
+					//先组织出一个最新的品论数据对象
+					//想办法把评论的对象，保存到localstorage中
+						//localstorage只支持存放字符串,JSON.stringify
+						//在保存最新的评论数据之前先从localstorage中获得评论之前的数据，转换为数组对象，JSON.parse
+						//如果获取到的localstorage中的评论字符串为空不存在，则可以返回一个‘[]’,让JSON.parse去转换
+						//把最新的评论列表数组，再次调用JSON.stringify转为数组字符串,然后调用localstorage。setItem()
+
+					var comment={id:Date.now(),user:this.user,content:this.content}
+					//从localStorage中获取所有的评论
+					var list=JSON.parse(localStorage.getItem('cmts')||'[]');
+					list.push(content);
+					localStorage.setItem('cmts',JSON.stringify(list));
+					this.user='';
+					this.content='';
+
+				}
+			}
+		}
+
+
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				list:[
+				{id:Date.now(),user:'李白',content:'天生我材必有用'},
+				{id:Date.now(),user:'江小白',content:'劝君更尽一杯酒'},
+				{id:Date.now(),user:'小马',content:'风吹草低见'},
+					]
+			},
+			created(){
+				this.loaComment();
+			},
+			methods:{
+				loaComment(){
+					//从本地local加载
+					var list=JSON.parse(localStorage.getItem('cmts')||'[]');
+					this.list=list;
+				}
+			},
+			components:{
+				'cmt-box':commentBox;
+			}
+		});
+	</script>
+</body>
+</html>

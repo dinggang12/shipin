@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>美女画廊</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<h2>美女画廊</h2>
+	<div id="imagegallery">
+		<a href="images/1.jpg" title="美女A">
+			<img src="images/1.jpg" width="100px">
+		</a>
+		<a href="images/2.jpg" title="美女B">
+			<img src="images/2.jpg" width="100px">
+		</a>
+		<a href="images/3.jpg" title="美女C">
+			<img src="images/3.jpg" width="100px">
+		</a>
+		<a href="images/4.jpg" title="美女D">
+			<img src="images/4.jpg" width="100px">
+		</a>
+	</div>
+	<div style="clear: both"></div>
+	<img src="images/1.jpg" id="image">
+	<p id="des">请选择一个图片</p>
+	<script type="text/javascript">
+		//1.获取元素
+		var imagegallery=document.getElementById('imagegallery');
+		var links=document.getElementsByTagName('a');/*获取所有的a标签元素*/
+		//2.为元素注册事件
+		for(var i=0;i<links.length;i++){/*为每一个a标签注册事件*/
+			var link=links[i];
+
+			link.onclick=function(){
+				//获取大的img标签
+				var image=document.getElementById('image');
+				image.src=this.href;
+				var des=document.getElementById('des');
+				/*获取当前点击的a标签的title属性*/
+				var inin=this.title;
+				des.innerHTML=inin;
+				
+
+				return false/*取消a的默认行为*/
+			}
+		}
+		//3.取消a的默认跳转行为
+		//4.切换图片
+		//5.
+	</script>
+</body>
+</html>

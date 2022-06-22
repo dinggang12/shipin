@@ -1,0 +1,15 @@
+{
+  "name": "001anli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "001.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "markdown-it": "^12.0.6"
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>删除图书的页面</title>
+	
+</head>
+<body>
+	<div>删除图书</div>
+	<!-- 表单基本都用post -->
+	<form action="/deleteBook" method="post">
+		<input type="hidden" name="id" value="{{id}}">
+		名称：<input type="text" name="name" value="{{name}}"><br>
+		作者：<input type="text" name="author" value="{{author}}"><br>
+		分类：<input type="text" name="category" value="{{category}}"><br>
+		描述：<input type="text" name="desc" value="{{description}}"><br>
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>

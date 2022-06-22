@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		<!-- 对象就是无序键值对的集合 -->
+		<h1 :style="[styleObj,styleObj2]">知识一盒</h1>
+	</div>
+
+
+	<script type="text/javascript">
+
+		
+		var vm=new Vue({
+			el: '#app', 
+			data:{
+				msg:'欢迎学习Vue',
+				styleObj:{color:'red','font-weight':200},
+				styleObj2:{'font-style':'italic'}
+			}
+		});
+	</script>
+</body>
+</html>

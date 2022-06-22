@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+            z-index: 1000;
+
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+	<div class="all" id='box'>
+    	<div class="screen">
+        	<ul>
+	            <li><img src="images/1.jpg" width="500" height="200"/></li>
+	            <li><img src="images/2.jpg" width="500" height="200"/></li>
+	            <li><img src="images/3.jpg" width="500" height="200"/></li>
+	            <li><img src="images/4.jpg" width="500" height="200"/></li>
+	            <li><img src="images/5.jpg" width="500" height="200"/></li>
+	        </ul>
+        	<ol>	
+        	</ol>
+    	</div>
+    	<div id="arr">
+    		<span id="left">&lt;</span>
+    		<span id="right">&gt;</span>
+    	</div>
+	</div>
+<script src="./commonjs/common.js"></script>
+<script src="./commonjs/animate.js"></script>
+<script type="text/javascript">
+	//获取元素
+	var box=my$('box');
+	var screen=box.children[0];
+	var ul=screen.children[0];
+	var ol=screen.children[1];
+	var arr=my$('arr');
+	var arrLeft=my$('left');
+	var arrRight=my$('right');
+	//1.动态生成序号
+	var count=ul.children.length;/*此时没有克隆的li节点*/
+	var imaWidth=screen.offsetWidth;
+	for(var i=0;i<count;i++){
+		var li=document.createElement('li');
+		ol.appendChild(li);
+		setInnerText(li,i+1);
+		/*if(i===0){
+			li.className='current';
+		}*/
+		//2.点击序号 动画的方式 切换图片
+		li.onclick=liClick;
+		//让当前li记录自己索引
+		li.setAttribute('index',i);
+	}
+	function liClick(){
+		//2.1先取消所有li的高亮显示
+		for(var i=0;i<ol.children.length;i++){
+			var li=ol.children[i];
+			li.className='';
+		}
+		//再给对应的高亮
+		this.className='current';
+
+		//2.2点击序号，动画的方式切换到当前点击图片位置
+		
+		//获取自定义的属性
+		var liIndex=parseInt(this.getAttribute('index'));
+		animate(ul,-liIndex*imaWidth);
+		
+        index=liIndex;
+		
+	}
+	//让序号1高亮显示
+	ol.children[0].className='current';
+	
+
+
+	//3.鼠标放到盒子上显示箭头
+	box.onmouseenter=function(){
+		arr.style.display='block';
+		/*清楚定时器*/
+		clearInterval(timeId);
+	}
+	box.onmouseleave=function(){
+		arr.style.display='none';
+		timeId=setInterval(function(){
+			arrRight.click();
+		},2000);
+	}
+
+	//4.实现上一张和下一张
+	var index=0;
+	arrLeft.onclick=function(){//上一张
+		//如果当前是第一张图片，此时要偷偷的切换到最后一张图片的位置（克隆的第一张）
+		if(index==0){
+			index=count;
+			ul.style.left=-index*imaWidth+'px';
+		}
+		index--;
+		ol.children[index].click();
+
+	}
+  arrRight.onclick=function(){//下一张
+    //如果是最后一张图片，不让index加
+    //总共5张，但是还有一张克隆 克隆图片索引是5
+    //判断是否是克隆的第一章图片，此时修改ul的坐标，显示真正第一章图片
+    if(index===count){
+    	ul.style.left='0px';
+    	index=0;
+    }
+		index++;
+    if(index<count){
+    	
+    	/*animate(ul,-index*imaWidth);*/
+    	//获取图片对应的序号
+    	ol.children[index].click();
+    }else{
+    	//以动画的方式，移动到克隆的第一张图片
+    	animate(ul,-index*imaWidth);
+    	//取消所有序号的高亮
+    	for(var i=0;i<ol.children.length;i++){
+    		var li=ol.children[i];
+    		li.className='';
+    	}
+    	ol.children[0].className='current';
+    }
+	}
+
+	//无缝滚动
+	//获取ul中的第一个li
+	var firstLi=ul.children[0];
+	var cloneLi=firstLi.cloneNode(true);
+	ul.appendChild(cloneLi);
+	
+    //5.自动切换图片
+	var timeId=setInterval(function(){
+		arrRight.click();
+	},2000);
+
+</script>
+</body>
+</html>
